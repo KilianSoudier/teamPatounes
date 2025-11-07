@@ -6,6 +6,7 @@ use App\Repository\BreedRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Contract\SluggableInterface;
 
 #[ORM\Entity(repositoryClass: BreedRepository::class)]
 #[ORM\Table(
@@ -19,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
         new ORM\Index(name: 'idx_breed_slug', columns: ['slug']),
     ]
 )]
-class Breed
+class Breed implements SluggableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -115,5 +116,9 @@ class Breed
         }
 
         return $this;
+    }
+    public function getSlugSource(): ?string
+    {
+      return $this->getName();
     }
 }

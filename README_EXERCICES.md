@@ -247,8 +247,3 @@ Acceptation : Email rendu Twig, expédié.
 -   Emails & slugs uniques (où indiqué).
 -   Transition de `Animal.status` contrôlée via workflow logique.
 -   Unicité d’une candidature active `(applicant, animal)` (pas de doublon tant que non REJECTED/CANCELLED).
-
-### Ex.2 — Migrations & Entités de base
-
--   Objectif : Créer User, Shelter, Species, Breed + relations + migrations.
--   Acceptation : Schéma conforme au modèle ; migrations up/down OK.
