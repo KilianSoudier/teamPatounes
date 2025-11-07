@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Animaux à l’adoption{% endblock %}
+{% block hero %}
+<section class="hero"><div class="container">
+  <h1 class="reveal">Animaux à l’adoption</h1>
+  <p class="reveal muted">Filtre par espèce, taille, statut, refuge.</p>
+</div></section>
+{% endblock %}
+{% block body %}
+<div class="card reveal">
+  <div class="card-body">
+    {% include 'animal/_filters.html.twig' %}
+  </div>
+</div>
+
+<div class="grid grid-3" style="margin-top:18px">
+  {% for animal in animals %}
+    {% include 'animal/_card.html.twig' with {animal: animal} %}
+  {% else %}
+    <p class="muted">Aucun animal ne correspond à la recherche.</p>
+  {% endfor %}
+</div>
+
+{% include 'partials/_pagination.html.twig' with {pager: pager} %}
+{% endblock %}

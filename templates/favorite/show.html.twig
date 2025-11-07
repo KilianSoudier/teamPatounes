@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon compte{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Mon compte</h1></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal"><div class="card-body">
+  <p class="help">Nom : {{ app.user.fullname }}</p>
+  <p class="help">Email : {{ app.user.email }}</p>
+  <p class="help">Téléphone : {{ app.user.phone ?: '—' }}</p>
+  <a class="btn" href="{{ path('account_edit') }}">Éditer</a>
+</div></div>
+{% endblock %}

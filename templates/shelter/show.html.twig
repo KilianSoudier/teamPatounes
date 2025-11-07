@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ shelter.name }}{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">{{ shelter.name }}</h1><p class="muted reveal">{{ shelter.city }}, {{ shelter.country }}</p></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal">
+  <div class="card-body">
+    <p class="help">{{ shelter.description|nl2br }}</p>
+    <p class="muted">Contact : <a href="mailto:{{ shelter.email }}">{{ shelter.email }}</a>{% if shelter.phone %} · {{ shelter.phone }}{% endif %}</p>
+  </div>
+</div>
+
+<h3 style="margin:18px 0">Animaux du refuge</h3>
+<div class="grid grid-3">
+  {% for animal in animals %}
+    {% include 'animal/_card.html.twig' with {animal:animal} %}
+  {% else %}
+    <p class="muted">Pas encore d’animaux publiés.</p>
+  {% endfor %}
+</div>
+{% endblock %}

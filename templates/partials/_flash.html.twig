@@ -1,0 +1,7 @@
+{% for label, messages in app.flashes %}
+  {% for message in messages %}
+    <div class="card reveal" style="border-left:6px solid {{ label == 'success' ? '#2ecc71' : (label == 'error' ? '#e74c3c' : '#ffb84d') }}">
+      <div class="card-body">{{ message|raw }}</div>
+    </div>
+  {% endfor %}
+{% endfor %}

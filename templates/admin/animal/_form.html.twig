@@ -1,0 +1,13 @@
+{# Fragment de formulaire pour créer/éditer un animal #}
+{{ form_start(form, {'attr': {'class':'form'}}) }}
+  {{ form_row(form.name, {'attr': {'class':'input'}}) }}
+  {{ form_row(form.species, {'attr': {'class':'select'}}) }}
+  {{ form_row(form.breed, {'attr': {'class':'select'}}) }}
+  {{ form_row(form.sex, {'attr': {'class':'select'}}) }}
+  {{ form_row(form.size, {'attr': {'class':'select'}}) }}
+  {{ form_row(form.color, {'attr': {'class':'input'}}) }}
+  {{ form_row(form.status, {'attr': {'class':'select'}}) }}
+  {{ form_row(form.description, {'attr': {'rows': 8}}) }}
+  {{ form_row(form.coverFile) }}
+  <button class="btn"><span class="btn-shimmer"></span>Enregistrer</button>
+{{ form_end(form) }}

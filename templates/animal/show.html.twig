@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ animal.name }}{% endblock %}
+{% block hero %}
+<section class="hero"><div class="container">
+  <h1 class="reveal">{{ animal.name }}</h1>
+  <p class="reveal muted">{{ animal.species.name }}{% if animal.breed %} · {{ animal.breed.name }}{% endif %} · {{ animal.shelter.name }}</p>
+</div></section>
+{% endblock %}
+{% block body %}
+<div class="grid grid-2">
+  <div class="card reveal card--span-8">
+    <div class="card-body">
+      <div class="grid grid-2">
+        <img src="{{ animal.coverPath ?: asset('images/placeholder-pet.jpg') }}" style="width:100%;height:320px;object-fit:cover;border-radius:12px">
+        <div>
+          <p class="help">{{ animal.description|nl2br }}</p>
+          <p>
+            <span class="tag">Sexe : {{ animal.sex }}</span>
+            {% if animal.size %}<span class="tag">Taille : {{ animal.size }}</span>{% endif %}
+            {% if animal.color %}<span class="tag">Couleur : {{ animal.color }}</span>{% endif %}
+          </p>
+          <div>
+            <a class="btn btn-primary" href="{{ path('application_new',{slug:animal.slug}) }}">Demander l’adoption</a>
+            <a class="btn" href="{{ path('favorite_toggle',{id:animal.id}) }}">❤️ Favori</a>
+          </div>
+        </div>
+      </div>
+
+      {% if animal.photos|length > 0 %}
+        <div style="margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+          {% for p in animal.photos %}
+            <img class="reveal" src="{{ p.path }}" style="width:100%;height:120px;object-fit:cover;border-radius:10px">
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-body">
+      <h3>Dossier médical</h3>
+      {% if animal.medicalRecord %}
+        <ul class="help">
+          <li>Vacciné : {{ animal.medicalRecord.vaccinated ? 'Oui' : 'Non' }}</li>
+          <li>Pucé : {{ animal.medicalRecord.chipped ? 'Oui' : 'Non' }}</li>
+          <li>Stérilisé : {{ animal.medicalRecord.sterilized ? 'Oui' : 'Non' }}</li>
+          {% if animal.medicalRecord.lastVetVisitAt %}<li>Dernière visite : {{ animal.medicalRecord.lastVetVisitAt|date('d/m/Y') }}</li>{% endif %}
+        </ul>
+      {% else %}
+        <p class="muted">Aucune info médicale.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

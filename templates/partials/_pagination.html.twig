@@ -1,0 +1,7 @@
+{% if pager is defined and pager.pageCount > 1 %}
+  <div class="reveal" style="display:flex;gap:8px;justify-content:center;margin:16px 0">
+    {% for p in 1..pager.pageCount %}
+      <a class="btn {{ p == pager.current ? 'btn-primary' : '' }}" href="{{ path(app.current_route, app.request.query.all | merge({'page': p})) }}">{{ p }}</a>
+    {% endfor %}
+  </div>
+{% endif %}

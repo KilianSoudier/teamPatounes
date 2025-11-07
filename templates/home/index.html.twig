@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil · Team Patounes{% endblock %}
+{% block hero %}
+<section class="hero">
+  <div class="container">
+    <h1 class="reveal">Donne une seconde chance 💛</h1>
+    <p class="reveal" style="transition-delay:.08s">Découvre nos animaux à l’adoption, par refuge et par espèce.</p>
+    <div class="reveal" style="margin-top:18px">
+      <a class="btn btn-primary" href="{{ path('animal_index') }}">Voir les animaux</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block body %}
+<div class="cards">
+  <div class="card card--span-6 reveal">
+    <div class="card-body">
+      <h3>Derniers animaux</h3>
+      <div class="grid grid-2">
+        {% for a in latestAnimals %}
+          {% include 'animal/_card.html.twig' with {animal: a} %}
+        {% else %}
+          <p class="muted">Rien pour l’instant.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="card card--span-6 reveal" style="transition-delay:.12s">
+    <div class="card-body">
+      <h3>Refuges partenaires</h3>
+      <ul>
+        {% for s in shelters %}
+          <li><a href="{{ path('shelter_show', {slug: s.slug}) }}">{{ s.name }}</a></li>
+        {% else %}
+          <li class="muted">Aucun refuge</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Introuvable (404){% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Page introuvable</h1></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal"><div class="card-body">
+  <p class="help">La page demandée n’existe pas.</p>
+  <a class="btn" href="{{ path('app_home') }}">Retour à l’accueil</a>
+</div></div>
+{% endblock %}

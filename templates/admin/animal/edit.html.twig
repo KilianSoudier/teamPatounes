@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier {{ animal.name }}{% endblock %}
+{% block hero %}
+<section class="hero"><div class="container"><h1 class="reveal">Modifier {{ animal.name }}</h1></div></section>
+{% endblock %}
+{% block body %}
+<div class="card reveal"><div class="card-body">{% include 'admin/animal/_form.html.twig' %}</div></div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<nav class="nav-links">
+  <a href="{{ path('app_home') }}" class="{{ app.current_route starts with 'app_home' ? 'active' : '' }}">Accueil</a>
+  <a href="{{ path('animal_index') }}" class="{{ app.current_route starts with 'animal_' ? 'active' : '' }}">Animaux</a>
+  <a href="{{ path('shelter_index') }}" class="{{ app.current_route starts with 'shelter_' ? 'active' : '' }}">Refuges</a>
+  <a href="{{ path('favorite_index') }}" class="{{ app.current_route starts with 'favorite_' ? 'active' : '' }}">Favoris</a>
+  {% if app.user %}
+    <a href="{{ path('account_show') }}">Mon compte</a>
+    <a href="{{ path('app_logout') }}" class="btn">Déconnexion</a>
+  {% else %}
+    <a href="{{ path('app_login') }}" class="btn">Connexion</a>
+  {% endif %}
+</nav>

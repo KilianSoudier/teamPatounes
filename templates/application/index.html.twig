@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Candidatures{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Candidatures</h1></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal">
+  <div class="card-body">
+    <table>
+      <thead><tr><th>Animal</th><th>Demandeur</th><th>Statut</th><th>Créée le</th><th></th></tr></thead>
+      <tbody>
+      {% for app in applications %}
+        <tr class="reveal">
+          <td><a href="{{ path('animal_show',{slug:app.animal.slug}) }}">{{ app.animal.name }}</a></td>
+          <td>{{ app.applicant.fullname }} · {{ app.applicant.email }}</td>
+          <td><span class="pill status-{{ app.status }}">{{ app.status }}</span></td>
+          <td>{{ app.createdAt|date('d/m/Y H:i') }}</td>
+          <td><a class="btn" href="{{ path('application_edit',{id:app.id}) }}">Gérer</a></td>
+        </tr>
+      {% else %}
+        <tr><td colspan="5" class="muted">Aucune candidature</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

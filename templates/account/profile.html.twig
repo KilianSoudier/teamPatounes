@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon compte{% endblock %}
+
+{% block hero %}
+<section class="hero">
+  <div class="container">
+    <h1 class="reveal">Mon compte</h1>
+  </div>
+</section>
+{% endblock %}
+
+{% block body %}
+<div class="grid grid-2">
+  <section class="reveal">
+    <div class="card"><div class="card-body">
+      {{ form_start(profileForm, {'attr': {'class':'form'}}) }}
+        {{ form_row(profileForm.fullname, {'label': 'Nom complet','attr': {'class':'input'}}) }}
+        {{ form_row(profileForm.phone, {'label': 'Téléphone','attr': {'class':'input'}}) }}
+        <button class="btn"><span class="btn-shimmer"></span>Mettre à jour</button>
+      {{ form_end(profileForm) }}
+    </div></div>
+  </section>
+
+  <section class="reveal">
+    <div class="card"><div class="card-body">
+      <h3>Changer le mot de passe</h3>
+      {{ form_start(passwordForm, {'attr': {'class':'form','autocomplete':'off'}}) }}
+        {{ form_row(passwordForm.currentPassword, {'label':'Mot de passe actuel','attr': {'class':'input'}}) }}
+        {{ form_row(passwordForm.newPassword, {'label':'Nouveau mot de passe','attr': {'class':'input'}}) }}
+        <button class="btn"><span class="btn-shimmer"></span>Changer</button>
+      {{ form_end(passwordForm) }}
+    </div></div>
+  </section>
+</div>
+{% endblock %}

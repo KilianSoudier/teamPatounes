@@ -1,0 +1,18 @@
+<form method="get" class="grid grid-3">
+  <div><select class="select" name="species"><option value="">Espèce</option>
+    {% for sp in species %}<option value="{{ sp.slug }}" {{ app.request.get('species')==sp.slug?'selected':'' }}>{{ sp.name }}</option>{% endfor %}
+  </select></div>
+  <div><select class="select" name="status"><option value="">Statut</option>
+    {% for s in ['AVAILABLE','RESERVED','ADOPTED','UNAVAILABLE'] %}
+      <option {{ app.request.get('status')==s?'selected':'' }}>{{ s }}</option>
+    {% endfor %}
+  </select></div>
+  <div><input class="input" type="text" name="q" value="{{ app.request.get('q') }}" placeholder="Recherche (nom, refuge…)" /></div>
+  <div><select class="select" name="size"><option value="">Taille</option>
+    {% for s in ['SMALL','MEDIUM','LARGE'] %}<option {{ app.request.get('size')==s?'selected':'' }}>{{ s }}</option>{% endfor %}
+  </select></div>
+  <div><select class="select" name="sex"><option value="">Sexe</option>
+    {% for s in ['MALE','FEMALE','UNKNOWN'] %}<option {{ app.request.get('sex')==s?'selected':'' }}>{{ s }}</option>{% endfor %}
+  </select></div>
+  <div><button class="btn btn-primary" style="width:100%">Filtrer</button></div>
+</form>
