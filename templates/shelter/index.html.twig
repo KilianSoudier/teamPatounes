@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Refuges{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Refuges partenaires</h1></div></section>{% endblock %}
+{% block body %}
+<div class="grid grid-3">
+  {% for s in shelters %}
+    <div class="card reveal">
+      <div class="card-body">
+        <h3><a href="{{ path('shelter_show',{slug:s.slug}) }}">{{ s.name }}</a></h3>
+        <p class="muted">{{ s.city }}, {{ s.country }}</p>
+        <p class="help">{{ s.description|u.truncate(120,'…',false) }}</p>
+        <a class="btn" href="{{ path('shelter_show',{slug:s.slug}) }}">Voir</a>
+      </div>
+    </div>
+  {% else %}
+    <p class="muted">Aucun refuge pour l’instant.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Gérer la candidature{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Gérer la candidature</h1></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal"><div class="card-body">
+  <p class="help">Demandeur : {{ app.applicant.fullname }} · {{ app.applicant.email }}</p>
+  <p class="help">Animal : <a href="{{ path('animal_show',{slug:app.animal.slug}) }}">{{ app.animal.name }}</a></p>
+  <blockquote class="muted">{{ app.message|nl2br }}</blockquote>
+
+  {{ form_start(form) }}
+    {{ form_row(form.status, {'attr': {'class':'select'}}) }}
+    <button class="btn btn-primary">Mettre à jour</button>
+  {{ form_end(form) }}
+</div></div>
+{% endblock %}

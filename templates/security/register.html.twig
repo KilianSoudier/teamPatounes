@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Inscription{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Créer un compte</h1></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal"><div class="card-body">
+  {{ form_start(form) }}
+    <div class="grid grid-2">
+      {{ form_row(form.fullname, {'attr': {'class':'input'}}) }}
+      {{ form_row(form.email, {'attr': {'class':'input'}}) }}
+      {{ form_row(form.plainPassword, {'attr': {'class':'input'}}) }}
+      {{ form_row(form.phone, {'attr': {'class':'input'}}) }}
+    </div>
+    <button class="btn btn-primary">Créer le compte</button>
+  {{ form_end(form) }}
+</div></div>
+{% endblock %}

@@ -1,0 +1,18 @@
+<table width="100%" cellpadding="0" cellspacing="0" style="font-family:Inter,Arial;color:#222">
+  <tr><td align="center" style="padding:24px;background:#ffe7df">
+    <table width="600" style="background:#fff;border-radius:12px;padding:24px">
+      <tr><td>
+        <h2 style="margin:0 0 6px">Mise à jour de ta candidature</h2>
+        <p style="color:#666">Animal : <strong>{{ animal.name }}</strong></p>
+        <p>Nouveau statut : <strong>{{ status }}</strong></p>
+        {% if status == 'APPROVED' %}
+          <p>Bravo 🎉 ! Nous allons te contacter pour finaliser l’adoption.</p>
+        {% elseif status == 'REJECTED' %}
+          <p>Merci pour ton intérêt. Ce n’est pas passé cette fois, mais d’autres compagnons t’attendent.</p>
+        {% else %}
+          <p>Nous continuons l’étude de ton dossier.</p>
+        {% endif %}
+      </td></tr>
+    </table>
+  </td></tr>
+</table>

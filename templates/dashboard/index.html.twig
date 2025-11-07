@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title %}Tableau de bord{% endblock %}
+
+{% block hero %}
+<section class="hero">
+  <div class="container">
+    <h1 class="reveal">Tableau de bord</h1>
+    <p class="reveal">Vue d’ensemble des animaux et candidatures</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block body %}
+<section class="grid grid-3">
+  <div class="card reveal"><div class="card-body">
+    <div class="help">Animaux disponibles</div>
+    <div style="font-size:2rem; font-weight:900">{{ kpis.available }}</div>
+  </div></div>
+  <div class="card reveal"><div class="card-body">
+    <div class="help">Candidatures en cours</div>
+    <div style="font-size:2rem; font-weight:900">{{ kpis.reviewing }}</div>
+  </div></div>
+  <div class="card reveal"><div class="card-body">
+    <div class="help">Adoptions ce mois</div>
+    <div style="font-size:2rem; font-weight:900">{{ kpis.adoptedThisMonth }}</div>
+  </div></div>
+</section>
+
+<section class="reveal" style="margin-top:16px">
+  <h2>Dernières candidatures</h2>
+  <div class="card">
+    <div class="card-body" style="padding:0">
+      <table>
+        <thead>
+          <tr><th>Animal</th><th>Demandeur</th><th>Statut</th><th>Date</th><th></th></tr>
+        </thead>
+        <tbody>
+        {% for app in applications %}
+          <tr>
+            <td>{{ app.animal.name }}</td>
+            <td>{{ app.applicant.fullname }} ({{ app.applicant.email }})</td>
+            <td>{{ app.status }}</td>
+            <td>{{ app.createdAt|date('d/m/Y H:i') }}</td>
+            <td><a class="btn btn-ghost" href="{{ path('application_show', {id: app.id}) }}">Ouvrir</a></td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5" class="help">Aucune candidature récente.</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Candidature · {{ animal.name }}{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Candidater pour {{ animal.name }}</h1></div></section>{% endblock %}
+{% block body %}
+<div class="card reveal">
+  <div class="card-body">
+    {{ form_start(form) }}
+      {{ form_row(form.message, {'attr': {'class':'input','rows':6, 'placeholder':'Parle-nous de toi, de ton foyer…'}}) }}
+      <button class="btn btn-primary">Envoyer la candidature</button>
+    {{ form_end(form) }}
+  </div>
+</div>
+{% endblock %}

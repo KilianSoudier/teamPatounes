@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mes favoris{% endblock %}
+{% block hero %}<section class="hero"><div class="container"><h1 class="reveal">Mes favoris</h1></div></section>{% endblock %}
+{% block body %}
+<div class="grid grid-3">
+  {% for fav in favorites %}
+    {% include 'animal/_card.html.twig' with {animal: fav.animal} %}
+  {% else %}
+    <p class="muted">Tu n’as encore aucun favori.</p>
+  {% endfor %}
+</div>
+{% endblock %}

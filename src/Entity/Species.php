@@ -6,6 +6,7 @@ use App\Repository\SpeciesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Contract\SluggableInterface;
 
 #[ORM\Entity(repositoryClass: SpeciesRepository::class)]
 #[ORM\Table(
@@ -19,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
         new ORM\Index(name: 'idx_species_slug', columns: ['slug']),
     ]
 )]
-class Species
+class Species implements SluggableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -137,5 +138,9 @@ class Species
         }
 
         return $this;
+    }
+    public function getSlugSource(): ?string
+    {
+      return $this->getName();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Contract\SluggableInterface;
 use App\Repository\ShelterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,7 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
     ]
 )]
 #[ORM\HasLifecycleCallbacks]
-class Shelter
+class Shelter implements SluggableInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -254,5 +255,10 @@ class Shelter
         }
 
         return $this;
+    }
+
+     public function getSlugSource(): ?string
+    {
+      return $this->getName();
     }
 }
